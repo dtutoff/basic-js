@@ -26,14 +26,6 @@ class DepthCalculator {
       count = 1;
     }
 
-    // arr.forEach((el) => {
-    //   if (Array.isArray(el)) {
-    //     count += this.calculateDepth(el);
-    //   }
-    //   maxCount = count > maxCount ? count : maxCount;
-    //   count = 1;
-    // })
-
     return maxCount;
   }
 }
