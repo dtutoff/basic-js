@@ -15,7 +15,6 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function countCats(arr) {
-  // throw new NotImplementedError('Not implemented');
   let cats = 0;
   for (const el of arr) {
     cats += el.filter((el) => el === "^^").length;
