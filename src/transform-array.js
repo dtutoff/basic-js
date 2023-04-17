@@ -14,12 +14,32 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function transform(arr) {
-  throw new NotImplementedError('Not implemented');
   if (!Array.isArray(arr)) {
     throw new Error("'arr' parameter must be an instance of the Array!");
   }
 
-  return '';
+  const coppyArr = arr.slice();
+  const result = [];
+
+  coppyArr.forEach((el, index) => {
+    if (el === '--discard-next' && index !== coppyArr.length - 1) {
+      coppyArr.splice(index + 1, 1);
+    }
+    if (el === '--discard-prev' && index !== 0 && coppyArr[index - 1] !== '--discard-next') {
+      result.pop();
+    }
+    if (el === '--double-next' && index !== coppyArr.length - 1) {
+      result.push(coppyArr[index + 1]);
+    }
+    if (el === '--double-prev' && index !== 0 && coppyArr[index - 1] !== '--discard-next') {
+      result.push(coppyArr[index - 1]);
+    }
+    if (el !== '--double-prev' && el !== '--double-next' && el !== '--discard-next' && el !== '--discard-prev') {
+      result.push(el);
+    }
+  });
+
+  return result;
 }
 
 module.exports = {
