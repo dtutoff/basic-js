@@ -41,8 +41,8 @@ const chainMaker = {
         } else {
           return `~~( ${el} )`;
         }
-      })
-      .join("");
+      }).join('');
+
     this.cleanChain();
     return result;
   }
